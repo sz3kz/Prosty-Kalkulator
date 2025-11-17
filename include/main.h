@@ -7,4 +7,9 @@
 
 #define INTERRACTIVE_MODE_ARGUMENT_COUNT 2
 
+enum Interractive_Mode_Arguments{
+	PROGRAM_NAME,
+	INTERRACTIVE_SWITCH
+};
+
 #endif
