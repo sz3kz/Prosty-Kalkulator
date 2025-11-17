@@ -20,10 +20,12 @@ int main(int argc, char * argv[]){
 	int number1, number2;
 	if (is_interractive){
 		ask_for_number(&number1);
+		ask_for_operator(&operator);
 		ask_for_number(&number2);
 	}
 	printf("number1 = %d\n",number1);
 	printf("number2 = %d\n",number2);
+	printf("operator = \"%c\"(%d)\n", operator, operator);
 	puts("Hello World!");
 	return 0;
 }
