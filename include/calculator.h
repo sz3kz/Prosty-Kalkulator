@@ -8,5 +8,6 @@
 
 
 int addition(int number1, int number2, double * sum);
+int subtraction(int number1, int number2, double * difference);
 
 #endif

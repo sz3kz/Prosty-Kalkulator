@@ -34,5 +34,11 @@ int main(int argc, char * argv[]){
 			result, number1, number2, sum);
 	else
 		puts("Addition failed!");
+	result = subtraction(number1, number2, &sum);
+	if (result == OPERATION_SUCCESS)
+		printf("(%d) %d - %d = %lf\n",
+			result, number1, number2, sum);
+	else
+		puts("Subtraction failed!");
 	return 0;
 }
