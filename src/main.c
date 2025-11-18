@@ -13,14 +13,16 @@ int main(int argc, char * argv[]){
 				break;
 			}
 			puts("Invalid switch!");
-			print_help(argv);
+			help_interractive(argv);
+			help_commandline(argv);
 			return -1;
 		case ARGC_COMMANDLINE:
 			mode = COMMANDLINE;
 			break;
 		default:
 			puts("Invalid program invocation!");
-			print_help(argv);
+			help_interractive(argv);
+			help_commandline(argv);
 			return -1;
 	}
 
