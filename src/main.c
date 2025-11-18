@@ -50,5 +50,8 @@ int main(int argc, char * argv[]){
 		printf("%d %d = %lf\n",
 			number1, number2, result);
 	}
+
+	for (int i = 0; i < OPERATION_COUNT; ++i)
+		destroy_operation(available_operations[i]);
 	return 0;
 }

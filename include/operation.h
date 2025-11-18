@@ -13,4 +13,5 @@ typedef struct Operation{
 
 
 Operation * create_operation(char const * name, int (* pointer) (int,int,double*));
+void destroy_operation(Operation * operation);
 #endif
