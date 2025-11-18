@@ -6,7 +6,7 @@
 #define OPERATION_SUCCESS 0
 #define OPERATION_FAILURE -1
 #define OPERATION_COUNT 4
-
+#define OPERATION_NAME_SIZE 32
 
 int addition(int number1, int number2, double * sum);
 int subtraction(int number1, int number2, double * difference);

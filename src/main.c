@@ -17,15 +17,16 @@ int main(int argc, char * argv[]){
 		}
 		is_interractive = true;
 	}
-	char operator;
+	char operator[OPERATION_NAME_SIZE];
 	int number1, number2;
 	if (is_interractive){
 		ask_for_number(&number1);
 		EMPTY_STDIN;
-		ask_for_operator(&operator);
-		EMPTY_STDIN;
+		ask_for_operator(operator, OPERATION_NAME_SIZE);
+		//EMPTY_STDIN;
 		ask_for_number(&number2);
 	}
+	printf("operation: \"%s\"\n", operator);
 
 	int (* operations[OPERATION_COUNT]) (int, int, double *) = {
 		addition,
