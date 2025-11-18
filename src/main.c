@@ -5,18 +5,19 @@
 
 int main(int argc, char * argv[]){
 	bool is_interractive = false;
-	if (argc != INTERRACTIVE_MODE_ARGUMENT_COUNT){
-		puts("Invalid program invocation!");
-		print_help(argv);
-		return -1;
-	}
-	if (argc == INTERRACTIVE_MODE_ARGUMENT_COUNT ){
-		if (strcmp(argv[INTERRACTIVE_SWITCH], "-i") != 0){
+	switch (argc){
+		case INTERRACTIVE_MODE_ARGUMENT_COUNT:
+			if (strcmp(argv[INTERRACTIVE_SWITCH], "-i") == 0){
+				is_interractive = true;
+				break;
+			}
 			puts("Invalid switch!");
 			print_help(argv);
 			return -1;
-		}
-		is_interractive = true;
+		default:
+			puts("Invalid program invocation!");
+			print_help(argv);
+			return -1;
 	}
 
 	Operation * available_operations[OPERATION_COUNT];
