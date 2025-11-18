@@ -17,5 +17,6 @@ enum Interractive_Mode_Arguments{
 void print_help(char * argv[]);
 void ask_for_number(int * number_ptr);
 void ask_for_operator(char * operator, size_t size);
+void newline2null(char * operator, size_t size);
 
 #endif
