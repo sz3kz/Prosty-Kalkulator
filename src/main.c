@@ -1,5 +1,6 @@
 #include "../include/main.h"
 #include "../include/interractive.h"
+#include "../include/calculator.h"
 
 int main(int argc, char * argv[]){
 	bool is_interractive = false;
@@ -25,9 +26,13 @@ int main(int argc, char * argv[]){
 		EMPTY_STDIN;
 		ask_for_number(&number2);
 	}
-	printf("number1 = %d\n",number1);
-	printf("number2 = %d\n",number2);
-	printf("operator = \"%c\"(%d)\n", operator, operator);
-	puts("Hello World!");
+	int result;
+	double sum;
+	result = addition(number1, number2, &sum);
+	if (result == OPERATION_SUCCESS)
+		printf("(%d) %d + %d = %lf\n",
+			result, number1, number2, sum);
+	else
+		puts("Addition failed!");
 	return 0;
 }
