@@ -1,6 +1,7 @@
 #include "../include/main.h"
 #include "../include/interractive.h"
 #include "../include/calculator.h"
+#include "../include/operation.h"
 
 int main(int argc, char * argv[]){
 	bool is_interractive = false;
