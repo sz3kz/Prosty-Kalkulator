@@ -10,4 +10,8 @@ enum Mode {
 	COMMANDLINE
 };
 
+enum Arguments{
+	PROGRAM_NAME = 0
+};
+
 #endif

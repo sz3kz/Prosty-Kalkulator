@@ -8,9 +8,8 @@
 #define ARGC_INTERRACTIVE 2
 #define EMPTY_STDIN while( getchar() != '\n' && getchar() != EOF)
 
-enum Interractive_Mode_Arguments{
-	PROGRAM_NAME,
-	INTERRACTIVE_SWITCH
+enum Arguments_Interractive{
+	INTERRACTIVE_SWITCH = 1
 };
 
 void help_interractive(char * argv[]);

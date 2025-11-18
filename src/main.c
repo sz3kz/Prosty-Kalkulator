@@ -37,9 +37,9 @@ int main(int argc, char * argv[]){
 			ask_for_number(&number2);
 			break;
 		case COMMANDLINE:
-			sscanf(argv[1], "%d", &number1);
-			sscanf(argv[2], "%s", operator);
-			sscanf(argv[3], "%d", &number2);
+			sscanf(argv[FIRST_NUMBER], "%d", &number1);
+			sscanf(argv[OPERATOR], "%s", operator);
+			sscanf(argv[SECOND_NUMBER], "%d", &number2);
 			break;
 		default:
 			printf("Code Error: invalid mode value (%d)\n", mode);
