@@ -43,9 +43,6 @@ int main(int argc, char * argv[]){
 			printf("Code Error: invalid mode value (%d)\n", mode);
 			return -1;
 	}
-	printf("number1 = %d\n",number1);
-	printf("operator = \"%s\"\n",operator);
-	printf("number2 = %d\n",number2);
 
 	Operation * available_operations[OPERATION_COUNT];
 	available_operations[0] = create_operation("addition", '+', addition);
@@ -64,8 +61,9 @@ int main(int argc, char * argv[]){
 
 		code = pointer(number1, number2, &result);
 		if (code == OPERATION_FAILURE){
-			printf("Operation failed!\n");
-			continue;
+			printf("Operation failure: %d %c %d -> ERROR .\n",
+					number1, symbol, number2);
+			return -1;
 		}
 		printf("%d %c %d = %lf\n",
 			number1, symbol, number2, result);
