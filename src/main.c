@@ -23,32 +23,36 @@ int main(int argc, char * argv[]){
 			print_help(argv);
 			return -1;
 	}
-	printf("mode = %d\n",mode);
+
+	char operator[OPERATION_NAME_SIZE];
+	int number1, number2;
+	switch (mode){
+		case INTERRACTIVE:
+			ask_for_number(&number1);
+			EMPTY_STDIN;
+			ask_for_operator(operator, OPERATION_NAME_SIZE);
+			//EMPTY_STDIN;
+			ask_for_number(&number2);
+			break;
+		case COMMANDLINE:
+			sscanf(argv[1], "%d", &number1);
+			sscanf(argv[2], "%s", operator);
+			sscanf(argv[3], "%d", &number2);
+			break;
+		default:
+			printf("Code Error: invalid mode value (%d)\n", mode);
+			return -1;
+	}
+	printf("number1 = %d\n",number1);
+	printf("operator = \"%s\"\n",operator);
+	printf("number2 = %d\n",number2);
 
 	Operation * available_operations[OPERATION_COUNT];
 	available_operations[0] = create_operation("addition", addition);
 	available_operations[1] = create_operation("subtraction", subtraction);
 	available_operations[2] = create_operation("multiplication", multiplication);
 	available_operations[3] = create_operation("division", division);
-	char operator[OPERATION_NAME_SIZE];
-	int number1, number2;
-	if (mode == INTERRACTIVE){
-		ask_for_number(&number1);
-		EMPTY_STDIN;
-		ask_for_operator(operator, OPERATION_NAME_SIZE);
-		//EMPTY_STDIN;
-		ask_for_number(&number2);
-	}
-	else if (mode == COMMANDLINE){
-		sscanf(argv[1], "%d", &number1);
-		sscanf(argv[2], "%s", operator);
-		sscanf(argv[3], "%d", &number2);
-	}
-	else {
-		printf("Code Error: invalid mode value (%d)\n", mode);
-		return -1;
-	}
-	printf("operator = \"%s\"\n",operator);
+
 	int code;
 	double result;
 	for (int i = 0; i < OPERATION_COUNT; ++i){
