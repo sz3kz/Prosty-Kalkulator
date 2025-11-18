@@ -5,6 +5,13 @@
 #include "../include/commandline.h"
 
 int main(int argc, char * argv[]){
+
+	Operation * available_operations[OPERATION_COUNT];
+	available_operations[0] = create_operation("addition", '+', addition);
+	available_operations[1] = create_operation("subtraction", '-', subtraction);
+	available_operations[2] = create_operation("multiplication", '*', multiplication);
+	available_operations[3] = create_operation("division", '/',division);
+
 	enum Mode mode = NONE;
 	switch (argc){
 		case ARGC_INTERRACTIVE:
@@ -15,6 +22,7 @@ int main(int argc, char * argv[]){
 			puts("Invalid switch!");
 			help_interractive(argv);
 			help_commandline(argv);
+			print_available_operations(available_operations, OPERATION_COUNT);
 			return -1;
 		case ARGC_COMMANDLINE:
 			mode = COMMANDLINE;
@@ -23,6 +31,7 @@ int main(int argc, char * argv[]){
 			puts("Invalid program invocation!");
 			help_interractive(argv);
 			help_commandline(argv);
+			print_available_operations(available_operations, OPERATION_COUNT);
 			return -1;
 	}
 
@@ -45,12 +54,6 @@ int main(int argc, char * argv[]){
 			printf("Code Error: invalid mode value (%d)\n", mode);
 			return -1;
 	}
-
-	Operation * available_operations[OPERATION_COUNT];
-	available_operations[0] = create_operation("addition", '+', addition);
-	available_operations[1] = create_operation("subtraction", '-', subtraction);
-	available_operations[2] = create_operation("multiplication", '*', multiplication);
-	available_operations[3] = create_operation("division", '/',division);
 
 	int code;
 	double result;
