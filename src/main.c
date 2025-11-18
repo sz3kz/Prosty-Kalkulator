@@ -29,7 +29,8 @@ int main(int argc, char * argv[]){
 
 	int (* operations[OPERATION_COUNT]) (int, int, double *) = {
 		addition,
-		subtraction};
+		subtraction,
+		multiplication};
 	int code;
 	double result;
 	for (int i = 0; i < OPERATION_COUNT; ++i){
