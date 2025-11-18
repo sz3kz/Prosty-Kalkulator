@@ -2,18 +2,22 @@
 #include "../include/interractive.h"
 #include "../include/calculator.h"
 #include "../include/operation.h"
+#include "../include/commandline.h"
 
 int main(int argc, char * argv[]){
-	bool is_interractive = false;
+	int mode = 0;
 	switch (argc){
-		case INTERRACTIVE_MODE_ARGUMENT_COUNT:
+		case ARGC_INTERRACTIVE:
 			if (strcmp(argv[INTERRACTIVE_SWITCH], "-i") == 0){
-				is_interractive = true;
+				mode = 1;
 				break;
 			}
 			puts("Invalid switch!");
 			print_help(argv);
 			return -1;
+		case ARGC_COMMANDLINE:
+			mode = 2;
+			break;
 		default:
 			puts("Invalid program invocation!");
 			print_help(argv);
@@ -27,12 +31,17 @@ int main(int argc, char * argv[]){
 	available_operations[3] = create_operation("division", division);
 	char operator[OPERATION_NAME_SIZE];
 	int number1, number2;
-	if (is_interractive){
+	if (mode == 1){
 		ask_for_number(&number1);
 		EMPTY_STDIN;
 		ask_for_operator(operator, OPERATION_NAME_SIZE);
 		//EMPTY_STDIN;
 		ask_for_number(&number2);
+	}
+	if (mode == 2){
+		sscanf(argv[1], "%d", &number1);
+		sscanf(argv[2], "%s", operator);
+		sscanf(argv[3], "%d", &number2);
 	}
 	printf("operator = \"%s\"\n",operator);
 	int code;
