@@ -26,19 +26,21 @@ int main(int argc, char * argv[]){
 		EMPTY_STDIN;
 		ask_for_number(&number2);
 	}
-	int result;
-	double sum;
-	result = addition(number1, number2, &sum);
-	if (result == OPERATION_SUCCESS)
-		printf("(%d) %d + %d = %lf\n",
-			result, number1, number2, sum);
-	else
-		puts("Addition failed!");
-	result = subtraction(number1, number2, &sum);
-	if (result == OPERATION_SUCCESS)
-		printf("(%d) %d - %d = %lf\n",
-			result, number1, number2, sum);
-	else
-		puts("Subtraction failed!");
+
+	int (* operations[OPERATION_COUNT]) (int, int, double *) = {
+		addition,
+		subtraction};
+	int code;
+	double result;
+	for (int i = 0; i < OPERATION_COUNT; ++i){
+		int (* operation) (int,int,double*) = operations[i];
+		code = operation(number1, number2, &result);
+		if (code == OPERATION_FAILURE){
+			printf("Operation failed!\n");
+			continue;
+		}
+		printf("%d %d = %lf\n",
+			number1, number2, result);
+	}
 	return 0;
 }
