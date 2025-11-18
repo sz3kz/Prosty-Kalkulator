@@ -8,10 +8,11 @@
 
 typedef struct Operation{
 	char name[OPERATION_NAME_SIZE];
+	char symbol;
 	int (* pointer) (int, int, double*);
 } Operation;
 
 
-Operation * create_operation(char const * name, int (* pointer) (int,int,double*));
+Operation * create_operation(char const * name, char symbol,int (* pointer) (int,int,double*));
 void destroy_operation(Operation * operation);
 #endif

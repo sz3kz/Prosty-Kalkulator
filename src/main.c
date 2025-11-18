@@ -48,26 +48,27 @@ int main(int argc, char * argv[]){
 	printf("number2 = %d\n",number2);
 
 	Operation * available_operations[OPERATION_COUNT];
-	available_operations[0] = create_operation("addition", addition);
-	available_operations[1] = create_operation("subtraction", subtraction);
-	available_operations[2] = create_operation("multiplication", multiplication);
-	available_operations[3] = create_operation("division", division);
+	available_operations[0] = create_operation("addition", '+', addition);
+	available_operations[1] = create_operation("subtraction", '-', subtraction);
+	available_operations[2] = create_operation("multiplication", '*', multiplication);
+	available_operations[3] = create_operation("division", '/',division);
 
 	int code;
 	double result;
 	for (int i = 0; i < OPERATION_COUNT; ++i){
 		char * name = available_operations[i]->name;
+		char symbol = available_operations[i]->symbol;
+		int (* pointer) (int,int,double*) = available_operations[i]->pointer;
 		if(strncmp(operator, name, OPERATION_NAME_SIZE) != 0)
 			continue;
 
-		int (* pointer) (int,int,double*) = available_operations[i]->pointer;
 		code = pointer(number1, number2, &result);
 		if (code == OPERATION_FAILURE){
 			printf("Operation failed!\n");
 			continue;
 		}
-		printf("%d %d = %lf\n",
-			number1, number2, result);
+		printf("%d %c %d = %lf\n",
+			number1, symbol, number2, result);
 	}
 
 	for (int i = 0; i < OPERATION_COUNT; ++i)
