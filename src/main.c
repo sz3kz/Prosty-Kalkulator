@@ -18,6 +18,12 @@ int main(int argc, char * argv[]){
 		}
 		is_interractive = true;
 	}
+
+	Operation * available_operations[OPERATION_COUNT];
+	available_operations[0] = create_operation("addition", addition);
+	available_operations[1] = create_operation("subtraction", subtraction);
+	available_operations[2] = create_operation("multiplication", multiplication);
+	available_operations[3] = create_operation("division", division);
 	char operator[OPERATION_NAME_SIZE];
 	int number1, number2;
 	if (is_interractive){
@@ -27,18 +33,16 @@ int main(int argc, char * argv[]){
 		//EMPTY_STDIN;
 		ask_for_number(&number2);
 	}
-	printf("operation: \"%s\"\n", operator);
-
-	int (* operations[OPERATION_COUNT]) (int, int, double *) = {
-		addition,
-		subtraction,
-		multiplication,
-		division};
+	printf("operator = \"%s\"\n",operator);
 	int code;
 	double result;
 	for (int i = 0; i < OPERATION_COUNT; ++i){
-		int (* operation) (int,int,double*) = operations[i];
-		code = operation(number1, number2, &result);
+		char * name = available_operations[i]->name;
+		if(strncmp(operator, name, OPERATION_NAME_SIZE) != 0)
+			continue;
+
+		int (* pointer) (int,int,double*) = available_operations[i]->pointer;
+		code = pointer(number1, number2, &result);
 		if (code == OPERATION_FAILURE){
 			printf("Operation failed!\n");
 			continue;
