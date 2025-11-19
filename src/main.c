@@ -39,15 +39,15 @@ int main(int argc, char * argv[]){
 	int number1, number2;
 	switch (mode){
 		case INTERRACTIVE:
-			ask_for_number(&number1);
-			EMPTY_STDIN;
 			ask_for_operator(operator, OPERATION_NAME_SIZE);
+			//EMPTY_STDIN;
+			ask_for_number(&number1);
 			//EMPTY_STDIN;
 			ask_for_number(&number2);
 			break;
 		case COMMANDLINE:
-			sscanf(argv[FIRST_NUMBER], "%d", &number1);
 			sscanf(argv[OPERATOR], "%s", operator);
+			sscanf(argv[FIRST_NUMBER], "%d", &number1);
 			sscanf(argv[SECOND_NUMBER], "%d", &number2);
 			break;
 		default:
