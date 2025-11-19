@@ -1,9 +1,9 @@
 #include "../../include/operation.h"
 
-Operation * create_operation(char const * name, char symbol,int (* pointer) (int,int,int*)){
+Operation * create_operation(char const * name, char symbol,int (* address) (int,int,int*)){
 	Operation * operation = malloc(sizeof(Operation));
 	strncpy(operation->name, name, OPERATION_NAME_SIZE);
 	operation->symbol = symbol;
-	operation->pointer = pointer;
+	operation->address = address;
 	return operation;
 }

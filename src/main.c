@@ -79,7 +79,7 @@ int main(int argc, char * argv[]){
 
 		operation_name = operations[i]->name;
 		operation_symbol = operations[i]->symbol;
-		operation_address = operations[i]->pointer;
+		operation_address = operations[i]->address;
 
 		/* Check if current operation is one of interest */
 		if(strncmp(inputted_operation, operation_name, OPERATION_NAME_SIZE) != 0)
