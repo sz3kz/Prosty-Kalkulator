@@ -13,7 +13,6 @@ typedef struct Operation{
 	int (* address) (int, int, int*);
 } Operation;
 
-
 Operation * create_operation(char const * name, char symbol,int (* address) (int,int,int*));
 void destroy_operation(Operation * operation);
 void print_available_operations(Operation ** available_operations, size_t count);
