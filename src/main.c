@@ -90,7 +90,7 @@ int main(int argc, char * argv[]){
 		error_code = operation_address(first_operand, second_operand, &computation_result);
 
 		/* Check if computation succeeded */
-		if (error_code == OPERATION_FAILURE){
+		if (error_code == CALCULATION_FAILURE){
 			printf("Operation failure: %d %c %d => ERROR\n",
 					first_operand, operation_symbol, second_operand);
 			return -1;
