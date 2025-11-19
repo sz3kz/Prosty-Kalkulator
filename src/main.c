@@ -55,6 +55,7 @@ int main(int argc, char * argv[]){
 			return -1;
 	}
 
+	bool tried_calculation = false;
 	int code;
 	int result;
 	char * name;
@@ -67,6 +68,8 @@ int main(int argc, char * argv[]){
 		if(strncmp(operator, name, OPERATION_NAME_SIZE) != 0)
 			continue;
 
+
+		tried_calculation = true;
 		code = pointer(number1, number2, &result);
 		if (code == OPERATION_FAILURE){
 			printf("Operation failure: %d %c %d -> ERROR .\n",
@@ -76,6 +79,8 @@ int main(int argc, char * argv[]){
 		printf("%d %c %d = %d\n",
 			number1, symbol, number2, result);
 	}
+	if (! tried_calculation)
+		printf("Unavailable operator: \"%s\"\n", operator);
 
 	for (int i = 0; i < OPERATION_COUNT; ++i)
 		destroy_operation(available_operations[i]);
