@@ -1,6 +1,6 @@
 #include "../../include/calculator.h"
 
-int addition(int number1, int number2, double * sum){
+int addition(int number1, int number2, int * sum){
 
 	/* Integer Overflow */
 	if (number1 > 0)

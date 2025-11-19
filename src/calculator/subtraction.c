@@ -1,6 +1,6 @@
 #include "../../include/calculator.h"
 
-int subtraction(int number1, int number2, double * difference){
+int subtraction(int number1, int number2, int * difference){
 
 	/* Integer Overflow */
 	if (number1 < 0)

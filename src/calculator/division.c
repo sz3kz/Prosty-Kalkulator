@@ -1,6 +1,6 @@
 #include "../../include/calculator.h"
 
-int division(int number1, int number2, double * quotient){
+int division(int number1, int number2, int * quotient){
 	if (number2 == 0)
 		return OPERATION_FAILURE;
 

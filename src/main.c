@@ -56,11 +56,14 @@ int main(int argc, char * argv[]){
 	}
 
 	int code;
-	double result;
+	int result;
+	char * name;
+	char symbol;
+	int (* pointer) (int,int,int*);
 	for (int i = 0; i < OPERATION_COUNT; ++i){
-		char * name = available_operations[i]->name;
-		char symbol = available_operations[i]->symbol;
-		int (* pointer) (int,int,double*) = available_operations[i]->pointer;
+		name = available_operations[i]->name;
+		symbol = available_operations[i]->symbol;
+		pointer = available_operations[i]->pointer;
 		if(strncmp(operator, name, OPERATION_NAME_SIZE) != 0)
 			continue;
 
@@ -70,7 +73,7 @@ int main(int argc, char * argv[]){
 					number1, symbol, number2);
 			return -1;
 		}
-		printf("%d %c %d = %lf\n",
+		printf("%d %c %d = %d\n",
 			number1, symbol, number2, result);
 	}
 

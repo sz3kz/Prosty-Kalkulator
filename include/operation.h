@@ -10,11 +10,11 @@
 typedef struct Operation{
 	char name[OPERATION_NAME_SIZE];
 	char symbol;
-	int (* pointer) (int, int, double*);
+	int (* pointer) (int, int, int*);
 } Operation;
 
 
-Operation * create_operation(char const * name, char symbol,int (* pointer) (int,int,double*));
+Operation * create_operation(char const * name, char symbol,int (* pointer) (int,int,int*));
 void destroy_operation(Operation * operation);
 void print_available_operations(Operation ** available_operations, size_t count);
 
