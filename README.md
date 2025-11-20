@@ -7,11 +7,22 @@ nazwę oraz odpowiedni wskaźnik do funkcji związanej z tą nazwą, a następni
 funkcję i wyprowadzi wynik. Przyjmij, że elementem tablicy jest struktura zawierająca
 wskaźnik do tekstu i wskaźnik do funkcji.
 
-## Implementacja
-* Pobór danych od użytkownika
-  * podczas inwokacji ( czerpane z wiersza poleceń)
+## Jak zbudować?
+
+```bash
+cd Prosty-Kalkulator/
+```
+```bash
+mkdir build && make
+```
+The source of the program will be compiled into an executable inside of the 'build' directory.
 
 ## Narzędzia
-Język - C++
+Język - C
+
 Kompilator - gcc
+
 Narzędzie automatycznego kompilowania kodu - Make
+
+#
+
